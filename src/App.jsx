@@ -71,6 +71,7 @@ class App extends React.Component {
                     <option value="Tomato sauce">Tomato sauce</option>
                     <option value="Mushroom sauce">Mushroom sauce</option>
                     <option value="Pesto sauce">Pesto sauce</option>
+                    <option value="No sauce">None</option>
                   </select>
                 </label>
               </form>
@@ -85,6 +86,7 @@ class App extends React.Component {
                 <option value="Fish ">Fish</option>
                 <option value="Meat">Meat</option>
                 <option value="Vegetables">Vegetables</option>
+                <option value="No topping">None</option>
               </select>
             </label>
           </form>
