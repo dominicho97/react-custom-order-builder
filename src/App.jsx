@@ -6,14 +6,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "Small pasta",
-      sauce: "Mushroom sauce",
-      topping: "Fish"
+      value: "",
+      sauce: "",
+      topping: ""
     };
 
     //Bind functions
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeSauce = this.handleChangeSauce.bind(this);
+    this.handleChangeTopping = this.handleChangeTopping.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   //event
@@ -21,7 +22,11 @@ class App extends React.Component {
     this.setState({ value: event.target.value });
   }
   handleChangeSauce(event) {
-    this.setState({ value: event.target.value });
+    this.setState({ sauce: event.target.value });
+  }
+
+  handleChangeTopping(event) {
+    this.setState({ topping: event.target.value });
   }
   //output
   handleSubmit(event) {
@@ -59,7 +64,10 @@ class App extends React.Component {
               <form>
                 <label>
                   Choose your pasta sauce:
-                  <select>
+                  <select
+                    //value={this.state.sauce}
+                    onChange={this.handleChangeSauce}
+                  >
                     <option value="Tomato sauce">Tomato sauce</option>
                     <option value="Mushroom sauce">Mushroom sauce</option>
                     <option value="Pesto sauce">Pesto sauce</option>
@@ -73,10 +81,10 @@ class App extends React.Component {
           <form>
             <label>
               Choose your pasta topping:
-              <select>
+              <select onChange={this.handleChangeTopping}>
                 <option value="Fish ">Fish</option>
                 <option value="Meat">Meat</option>
-                <option value="Vegetables">vegetables</option>
+                <option value="Vegetables">Vegetables</option>
               </select>
             </label>
           </form>
