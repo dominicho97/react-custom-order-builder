@@ -6,11 +6,31 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
-      sauce: "",
-      topping: ""
+      value: "Small pasta",
+      sauce: "Tomato sauce",
+      topping: "Fish"
     };
 
+    //Prices
+    const pasta_prices = new Array();
+    {
+      pasta_prices["Small pasta"] = 5;
+      pasta_prices["Medium pasta "] = 6.5;
+      pasta_prices["Large pasta"] = 8;
+      pasta_prices["Extra large pasta"] = 10;
+    }
+
+    //GetPrice
+    function getPastaPrice() {
+      let getPastaPrice = 0;
+      let theForm = document.forms["cakeform"];
+      let selectedPasta = theForm.elements["filling"];
+      getPastaPrice = pasta_prices[selectedPasta.value];
+      return getPastaPrice;
+    }
+
+    //total price
+    let totalPrice = getPastaPrice;
     //Bind functions
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeSauce = this.handleChangeSauce.bind(this);
@@ -47,14 +67,18 @@ class App extends React.Component {
         <div>
           <div>
             <div className="pasta-size">
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit} id="cakeform">
                 <label>
                   Choose your pasta size:
-                  <select value={this.state.value} onChange={this.handleChange}>
-                    <option value="Small pasta">Small</option>
-                    <option value="Medium pasta">Medium</option>
-                    <option value="Large pasta">Large</option>
-                    <option value="Extra large pasta">Extra large</option>
+                  <select
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                    id="filling"
+                  >
+                    <option value="Small pasta">Small(5)</option>
+                    <option value="Medium pasta">Medium(6.5)</option>
+                    <option value="Large pasta">Large(8)</option>
+                    <option value="Extra large pasta">Extra large(10)</option>
                   </select>
                 </label>
                 <input type="submit" value="Submit" />
