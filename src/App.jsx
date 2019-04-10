@@ -5,7 +5,11 @@ import "./App.css";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "Small pasta", sauce: "Mushroom sauce" };
+    this.state = {
+      value: "Small pasta",
+      sauce: "Mushroom sauce",
+      topping: "Fish"
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeSauce = this.handleChangeSauce.bind(this);
@@ -20,13 +24,16 @@ class App extends React.Component {
   }
 
   handleSubmit(event) {
-    alert("Your order is: " + this.state.value + " with " + this.state.sauce);
+    alert(
+      "Your order is: " +
+        this.state.value +
+        " with " +
+        this.state.sauce +
+        " and " +
+        this.state.topping
+    );
     event.preventDefault();
   }
-  /* handleSubmitSauce(event) {
-    alert("Your order is: " + this.state.sauce);
-    event.preventDefault();
-  }*/
 
   render() {
     return (
@@ -62,19 +69,15 @@ class App extends React.Component {
           </div>
         </div>
         <div className="pasta-topping">
-          <form onSubmit={this.handleSubmit}>
+          <form>
             <label>
               Choose your pasta topping:
-              <select
-                value={this.state.value}
-                //onChange={this.handleChangeSauce}
-              >
+              <select>
                 <option value="Fish ">Fish</option>
                 <option value="Meat">Meat</option>
                 <option value="Vegetables">vegetables</option>
               </select>
             </label>
-            <input type="submit" value="Submit" />
           </form>
         </div>
       </div>
