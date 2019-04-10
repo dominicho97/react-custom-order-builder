@@ -2,41 +2,63 @@ import React, { Component } from "react";
 
 import "./App.css";
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "Napoli" };
-    // bind event
+    this.state = { value: "small pasta" };
+
     this.handleChange = this.handleChange.bind(this);
+    //this.handleChangeSauce = this.handleChangeSauce.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  // event
+
+  /*handleChangeSauce(event) {
+    this.setState({ value2: event.target.value });
+  }*/
+
   handleChange(event) {
     this.setState({ value: event.target.value });
-    //this.props.onChange(name);
   }
-  //submit
+
   handleSubmit(event) {
-    alert("Your favorite flavor is: " + this.state.value);
+    alert("Your order is: " + this.state.value);
     event.preventDefault();
   }
+
   render() {
     return (
-      <form className="App" onSubmit={this.handleSubmit}>
-        <label>
-          <h1>hmm</h1>
-
-          <div>
-            <h2>Pizza type</h2>
-            <select value={this.state.value} onChange={this.handleChange}>
-              <option value="Margherita">Margherita</option>
-              <option value="Napoli">Napoli</option>
-              <option value="Calzone">Calzone</option>
-            </select>
-          </div>
-        </label>
-        <input type="submit" value="Confirm" />
-      </form>
+      <div>
+        <div className="pasta-size">
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Choose your pasta size:
+              <select value={this.state.value} onChange={this.handleChange}>
+                <option value="Small pasta">Small</option>
+                <option value="Medium pasta">Medium</option>
+                <option value="Large pasta">Large</option>
+                <option value="Extra large pasta">Extra large</option>
+              </select>
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+        <div className="pasta-sauce">
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Choose your pasta sauce:
+              <select
+                value={this.state.value}
+                //onChange={this.handleChangeSauce}
+              >
+                <option value="Tomato sauce">Tomato sauce</option>
+                <option value="Mushroom sauce">Mushroom sauce</option>
+                <option value="Pesto sauce">Pesto sauce</option>
+              </select>
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
     );
   }
 }
