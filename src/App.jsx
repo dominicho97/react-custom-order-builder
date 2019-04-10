@@ -11,18 +11,19 @@ class App extends React.Component {
       topping: "Fish"
     };
 
+    //Bind functions
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeSauce = this.handleChangeSauce.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  //event
   handleChange(event) {
     this.setState({ value: event.target.value });
   }
   handleChangeSauce(event) {
     this.setState({ value: event.target.value });
   }
-
+  //output
   handleSubmit(event) {
     alert(
       "Your order is: " +
